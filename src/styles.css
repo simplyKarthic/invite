@@ -1,0 +1,442 @@
+/* ========================================
+   Wedding Invitation Card – Sunflower Theme
+   ======================================== */
+
+:root {
+  --bg-cream: #FDF6E3;
+  --bg-warm: #FBF0D1;
+  --gold: #C9A84C;
+  --gold-dark: #B8960F;
+  --gold-light: #E8D48B;
+  --brown: #6B4F12;
+  --brown-light: #8B6914;
+  --green: #4A7C3F;
+  --green-light: #5A8C4F;
+  --text-dark: #3D2B0E;
+  --text-body: #5A4520;
+  --text-muted: #8A7450;
+  --font-script: 'Great Vibes', cursive;
+  --font-serif: 'Cormorant Garamond', 'Lora', Georgia, serif;
+  --font-body: 'Lora', Georgia, serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #E8DCC8;
+  font-family: var(--font-body);
+  color: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* ========================================
+   CARD CONTAINER
+   ======================================== */
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: linear-gradient(
+    180deg,
+    #FDF6E3 0%,
+    #FBF0D1 25%,
+    #FDF6E3 50%,
+    #FBF0D1 75%,
+    #FDF6E3 100%
+  );
+  border-radius: 16px;
+  box-shadow:
+    0 4px 30px rgba(139, 105, 20, 0.15),
+    0 1px 3px rgba(0,0,0,0.08),
+    inset 0 0 80px rgba(201, 168, 76, 0.06);
+  overflow: hidden;
+  border: 1.5px solid rgba(201, 168, 76, 0.25);
+}
+
+/* ========================================
+   CORNER DECORATIONS
+   ======================================== */
+
+.corner-decor {
+  position: absolute;
+  width: clamp(100px, 28vw, 150px);
+  height: clamp(100px, 28vw, 150px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.corner-decor svg {
+  width: 100%;
+  height: 100%;
+}
+
+.top-left { top: -8px; left: -8px; }
+.top-right { top: -8px; right: -8px; }
+.bottom-left { bottom: -8px; left: -8px; }
+.bottom-right { bottom: -8px; right: -8px; }
+
+/* ========================================
+   BOKEH LIGHTS
+   ======================================== */
+
+.bokeh-lights {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bokeh {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,248,220,0.5) 0%, transparent 70%);
+  animation: bokehPulse 5s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes bokehPulse {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* ========================================
+   SIDE VINES
+   ======================================== */
+
+.side-vine {
+  position: absolute;
+  top: 15%;
+  width: 40px;
+  height: 70%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.side-vine svg {
+  width: 100%;
+  height: 100%;
+}
+
+.left-vine { left: 2px; }
+.right-vine { right: 2px; }
+
+/* ========================================
+   CARD CONTENT
+   ======================================== */
+
+.card-content {
+  position: relative;
+  z-index: 3;
+  padding: 60px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ========================================
+   NAMES
+   ======================================== */
+
+.names-section {
+  margin-bottom: 20px;
+}
+
+.name {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: var(--gold-dark);
+  line-height: 1;
+  text-shadow: 1px 2px 4px rgba(139, 105, 20, 0.15);
+}
+
+.name-1 {
+  font-size: clamp(52px, 13vw, 72px);
+}
+
+.name-2 {
+  font-size: clamp(48px, 12vw, 68px);
+}
+
+.ampersand {
+  font-family: var(--font-script);
+  font-size: clamp(28px, 7vw, 38px);
+  color: var(--gold);
+  margin: -4px 0 -2px;
+  opacity: 0.8;
+}
+
+.heart-ornament {
+  margin-top: 4px;
+}
+
+.heart-ornament svg {
+  filter: drop-shadow(0 2px 4px rgba(218, 165, 32, 0.3));
+}
+
+/* ========================================
+   INVITE MESSAGE
+   ======================================== */
+
+.invite-message {
+  font-family: var(--font-serif);
+  font-size: clamp(14px, 3.6vw, 17px);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 340px;
+}
+
+/* ========================================
+   DIVIDERS
+   ======================================== */
+
+.divider {
+  margin: 16px 0;
+  opacity: 0.8;
+}
+
+.divider.small {
+  margin: 12px 0;
+}
+
+/* ========================================
+   EVENT SECTIONS
+   ======================================== */
+
+.event-section {
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 8px;
+}
+
+.event-title {
+  font-family: var(--font-script);
+  font-size: clamp(28px, 7vw, 36px);
+  font-weight: 400;
+  color: var(--gold-dark);
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.event-title::before,
+.event-title::after {
+  content: '•';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+.event-title::before {
+  left: -18px;
+}
+
+.event-title::after {
+  right: -18px;
+}
+
+.event-details-box {
+  background: rgba(255, 252, 240, 0.7);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  backdrop-filter: blur(4px);
+}
+
+.event-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: clamp(13px, 3.4vw, 15px);
+}
+
+.event-row:last-child {
+  margin-bottom: 0;
+}
+
+.event-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.event-date-text {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.event-sep {
+  color: var(--text-muted);
+  margin: 0 2px;
+}
+
+.event-time-text {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.venue-info {
+  text-align: left;
+  line-height: 1.5;
+}
+
+.venue-info strong {
+  display: block;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.venue-info span {
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--gold-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.map-link:hover {
+  color: var(--brown);
+  text-decoration: underline;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer-message {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.footer-main {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(13px, 3.4vw, 15px);
+  color: var(--text-body);
+}
+
+.footer-warm {
+  font-family: var(--font-script);
+  font-size: clamp(18px, 4.5vw, 22px);
+  color: var(--gold-dark);
+  margin-top: 4px;
+}
+
+.gold-heart {
+  font-style: normal;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: 1.5px solid var(--gold);
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
+  color: var(--gold-dark);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.1));
+  box-shadow: 0 2px 12px rgba(201, 168, 76, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn svg {
+  flex-shrink: 0;
+}
+
+/* ========================================
+   GSAP ANIMATION HELPERS
+   ======================================== */
+
+.anim-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (min-width: 520px) {
+  .card {
+    border-radius: 20px;
+  }
+
+  .card-content {
+    padding: 70px 40px 50px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card-content {
+    padding: 50px 20px 32px;
+  }
+
+  .corner-decor {
+    width: 90px;
+    height: 90px;
+  }
+
+  .side-vine {
+    display: none;
+  }
+}

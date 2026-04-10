@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0B0B0F"/>
+      <stop offset="100%" style="stop-color:#1A0A2E"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C9A84C"/>
+      <stop offset="100%" style="stop-color:#E8A0BF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Decorative dots -->
+  <circle cx="100" cy="100" r="2" fill="#C9A84C" opacity="0.3"/>
+  <circle cx="300" cy="80" r="1.5" fill="#C9A84C" opacity="0.2"/>
+  <circle cx="900" cy="120" r="2.5" fill="#E8A0BF" opacity="0.2"/>
+  <circle cx="1050" cy="200" r="1.5" fill="#C9A84C" opacity="0.3"/>
+  <circle cx="150" cy="500" r="2" fill="#E8A0BF" opacity="0.2"/>
+  <circle cx="1000" cy="480" r="2" fill="#C9A84C" opacity="0.25"/>
+  <!-- Main text -->
+  <text x="600" y="260" text-anchor="middle" font-family="Inter, Poppins, -apple-system, sans-serif" font-size="52" font-weight="700" fill="url(#gold)">Karthic ❤️ Prathyusha</text>
+  <text x="600" y="330" text-anchor="middle" font-family="Inter, Poppins, -apple-system, sans-serif" font-size="24" font-weight="300" fill="#8A8A9A">Wedding Invitation</text>
+  <!-- Tagline -->
+  <text x="600" y="420" text-anchor="middle" font-family="Inter, Poppins, -apple-system, sans-serif" font-size="18" font-weight="400" fill="#555566" font-style="italic">"All because of love"</text>
+  <!-- Date -->
+  <text x="600" y="480" text-anchor="middle" font-family="Inter, Poppins, -apple-system, sans-serif" font-size="16" font-weight="400" fill="#8A8A9A">22 &amp; 23 April 2026 · Chennai</text>
+</svg>
