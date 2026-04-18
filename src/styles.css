@@ -38,9 +38,88 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   NAVIGATION MENU
+   ======================================== */
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #FDF6E3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 100;
+  padding: 0 16px;
+}
+
+.nav-item {
+  padding: 7px 20px;
+  border: 1.5px solid transparent;
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.nav-item:hover {
+  color: var(--gold-dark);
+  border-color: var(--gold-light);
+}
+
+.nav-item.active {
+  background: transparent;
+  border-color: var(--gold-dark);
+  color: var(--gold-dark);
+  font-weight: 600;
+}
+
+/* ========================================
+   PAGES CONTAINER
+   ======================================== */
+
+.pages-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 16px 40px;
+  overflow-x: hidden;
+}
+
+/* Hide any .page elements that end up outside .pages-container (browser quirk with malformed HTML) */
+body > .page,
+body > .card {
+  display: none !important;
+}
+
+.page {
+  display: none;
+  width: 100%;
+  max-width: 480px;
+  will-change: opacity;
+}
+
+.page.active {
+  display: block;
 }
 
 /* ========================================
@@ -59,13 +138,14 @@ body {
     #FBF0D1 75%,
     #FDF6E3 100%
   );
-  border-radius: 16px;
+  border-radius: 0 0 16px 16px;
   box-shadow:
     0 4px 30px rgba(139, 105, 20, 0.15),
     0 1px 3px rgba(0,0,0,0.08),
     inset 0 0 80px rgba(201, 168, 76, 0.06);
   overflow: hidden;
   border: 1.5px solid rgba(201, 168, 76, 0.25);
+  border-top: none;
 }
 
 /* ========================================
@@ -144,11 +224,17 @@ body {
 .card-content {
   position: relative;
   z-index: 3;
-  padding: 60px 28px 40px;
+  padding: 48px 28px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+/* Pages with caricature images use less top padding since image fills space */
+.page[data-page="0"] .card-content,
+.page[data-page="2"] .card-content {
+  padding-top: 36px;
 }
 
 /* ========================================
@@ -364,6 +450,122 @@ body {
    BUTTONS
    ======================================== */
 
+/* Knot Timer */
+.knot-timer {
+  text-align: center;
+  margin: 16px 0 4px;
+  padding: 14px 16px;
+  background: rgba(218, 165, 32, 0.06);
+  border: 1px solid rgba(218, 165, 32, 0.2);
+  border-radius: 14px;
+}
+.knot-timer-label {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a07820;
+  margin-bottom: 10px;
+}
+.knot-timer.is-official .knot-timer-label {
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: #8B6914;
+}
+.knot-timer-units {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.knot-timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+}
+.knot-timer-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #8B6914;
+  line-height: 1;
+}
+.knot-timer-sep {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #C9A84C;
+  align-self: flex-start;
+  padding-top: 2px;
+  margin: 0 -2px;
+}
+.knot-timer-lbl {
+  font-family: 'Lora', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a07820;
+  margin-top: 2px;
+}
+
+/* Swipe navigation cards on Invite page */
+.swipe-nav-cards {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 8px 0 4px;
+  width: 100%;
+}
+
+.swipe-nav-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 12px;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1.5px solid rgba(201, 168, 76, 0.35);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  font-family: var(--font-body);
+  text-align: left;
+}
+
+.swipe-nav-card:hover,
+.swipe-nav-card:active {
+  background: rgba(201, 168, 76, 0.18);
+  border-color: var(--gold-dark);
+}
+
+.swipe-nav-arrow {
+  font-size: 20px;
+  color: var(--gold-dark);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.swipe-nav-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.swipe-nav-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold-dark);
+  letter-spacing: 0.3px;
+}
+
+.swipe-nav-date {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
 .action-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -371,6 +573,131 @@ body {
   gap: 10px;
   margin-top: 8px;
 }
+
+/* ========================================
+   PHOTO UPLOAD SECTION
+   ======================================== */
+
+.upload-section {
+  width: 100%;
+  margin: 20px 0 8px;
+  text-align: center;
+}
+
+.upload-title {
+  font-family: var(--font-script);
+  font-size: 24px;
+  color: var(--gold-dark);
+  margin: 0 0 4px;
+}
+
+.upload-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 14px;
+}
+
+.upload-dropzone {
+  border: 2px dashed rgba(201, 168, 76, 0.45);
+  border-radius: 14px;
+  padding: 28px 16px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201, 168, 76, 0.04);
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragover {
+  border-color: var(--gold-dark);
+  background: rgba(201, 168, 76, 0.12);
+}
+
+.upload-icon {
+  color: var(--gold-dark);
+  opacity: 0.75;
+  margin-bottom: 2px;
+}
+
+.upload-hint {
+  font-size: 14px;
+  color: var(--text-body);
+  font-weight: 500;
+}
+
+.upload-hint-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.upload-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.upload-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(201, 168, 76, 0.06);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.upload-item-thumb {
+  width: 42px;
+  height: 42px;
+  border-radius: 7px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.upload-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.upload-item-name {
+  font-size: 12px;
+  color: var(--text-body);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.upload-item-progress {
+  width: 100%;
+  height: 3px;
+  background: rgba(201, 168, 76, 0.2);
+  border-radius: 2px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.upload-item-bar {
+  height: 100%;
+  background: var(--gold-dark);
+  border-radius: 2px;
+  transition: width 0.15s;
+  width: 0%;
+}
+
+.upload-item-status {
+  font-size: 16px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.upload-item-status.done  { color: #4CAF50; }
+.upload-item-status.error { color: #E53935; }
+.upload-item-status.pending { color: var(--gold-dark); }
 
 .btn {
   display: inline-flex;
@@ -404,7 +731,39 @@ body {
 }
 
 /* ========================================
-   GSAP ANIMATION HELPERS
+   CARICATURE IMAGE
+   ======================================== */
+
+.caricature-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 16px;
+  position: relative;
+  z-index: 3;
+}
+
+.caricature-img {
+  width: 85%;
+  max-width: 340px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+/* Tagline below names */
+.tagline {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 3.5vw, 15px);
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-top: 2px;
+  letter-spacing: 0.3px;
+}
+
+/* ========================================
+   ANIM HELPERS
    ======================================== */
 
 .anim-hidden {
@@ -415,6 +774,215 @@ body {
 /* ========================================
    RESPONSIVE
    ======================================== */
+
+/* Mobile Phones (320px - 480px) */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    background: #E8DCC8;
+  }
+
+  .nav-menu {
+    height: 48px;
+    gap: 4px;
+    padding: 0 8px;
+  }
+
+  .nav-item {
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 16px;
+  }
+
+  .pages-container {
+    padding: 48px 8px 12px;
+  }
+
+  .page {
+    max-width: 100%;
+  }
+
+  .card {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .card-content {
+    padding: 40px 16px 28px;
+  }
+
+  .corner-decor {
+    width: clamp(60px, 22vw, 100px);
+    height: clamp(60px, 22vw, 100px);
+  }
+
+  .name-1 {
+    font-size: 32px;
+  }
+
+  .name-2 {
+    font-size: 28px;
+  }
+
+  .ampersand {
+    font-size: 20px;
+  }
+
+  .invite-message {
+    font-size: 13px;
+    margin-bottom: 16px;
+    max-width: 100%;
+  }
+
+  .event-section {
+    max-width: 100%;
+  }
+
+  .event-title {
+    font-size: 22px;
+  }
+
+  .event-title::before,
+  .event-title::after {
+    display: none;
+  }
+
+  .event-details-box {
+    padding: 12px 12px;
+  }
+
+  .event-row {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .footer-main {
+    font-size: 12px;
+  }
+
+  .footer-warm {
+    font-size: 16px;
+  }
+
+  .action-buttons {
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .side-vine {
+    width: 25px;
+    opacity: 0.4;
+  }
+
+  .divider svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Tablets (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  html {
+    font-size: 15px;
+  }
+
+  .nav-menu {
+    height: 52px;
+    gap: 6px;
+    padding: 0 12px;
+  }
+
+  .nav-item {
+    padding: 7px 16px;
+    font-size: 13px;
+  }
+
+  .pages-container {
+    padding: 52px 14px 14px;
+  }
+
+  .page {
+    max-width: 95%;
+  }
+
+  .card {
+    max-width: 95%;
+  }
+
+  .card-content {
+    padding: 50px 24px 32px;
+  }
+
+  .name-1 {
+    font-size: 48px;
+  }
+
+  .name-2 {
+    font-size: 44px;
+  }
+
+  .ampersand {
+    font-size: 28px;
+  }
+
+  .invite-message {
+    font-size: 14px;
+    max-width: 320px;
+  }
+
+  .event-section {
+    max-width: 360px;
+  }
+
+  .event-title {
+    font-size: 28px;
+  }
+
+  .event-details-box {
+    padding: 13px 14px;
+  }
+
+  .event-row {
+    font-size: 13px;
+  }
+
+  .footer-main {
+    font-size: 13px;
+  }
+
+  .footer-warm {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+}
+
+/* Large Screens (769px+) */
+@media (min-width: 769px) {
+  .pages-container {
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 480px;
+  }
+
+  .card {
+    max-width: 480px;
+  }
+}
 
 @media (min-width: 520px) {
   .card {

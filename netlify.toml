@@ -2,6 +2,9 @@
   publish = "."
   # No build step needed — plain HTML/CSS/JS
 
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/*"
   [headers.values]

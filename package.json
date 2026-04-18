@@ -1,0 +1,17 @@
+{
+  "name": "wedding-invitation",
+  "version": "1.0.0",
+  "description": "Karthic & Prathyusha - Wedding Invitation",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "3.14.2"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
