@@ -12,6 +12,7 @@
     "gsap": "3.14.2"
   },
   "devDependencies": {
+    "terser": "^5.46.1",
     "vite": "^5.0.0"
   }
 }
