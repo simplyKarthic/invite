@@ -358,8 +358,8 @@ function uploadFile(file) {
   item.append(thumb, info, status);
   list.appendChild(item);
 
-  // Fetch auth params from Netlify function (keeps private key off the client)
-  fetch('/.netlify/functions/imagekit-auth')
+  // Fetch auth params from serverless function (keeps private key off the client)
+  fetch('/api/imagekit-auth')
     .then(r => r.json())
     .then(({ token, expire, signature }) => {
       const formData = new FormData();
