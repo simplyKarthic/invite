@@ -532,7 +532,7 @@ body > .card {
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
   font-family: var(--font-body);
-  text-align: left;
+  justify-content: space-evenly;
 }
 
 .swipe-nav-card:hover,
